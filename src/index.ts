@@ -1,25 +1,40 @@
-import { Subject, Observable } from "rxjs";
+import { ReplaySubject, Observable } from "rxjs";
 import { SimpleChanges } from "@angular/core";
 
 export class OnDestroyMixin {
-    ngOnDestroyObservable: Observable<void> = new Subject<void>();
+    onDestroy$ = new ReplaySubject<void>(1);
+
+    ngOnDestroyObservable(): Observable<void> {
+        return this.onDestroy$.asObservable();
+    }
+
     ngOnDestroy() {
-        (this.ngOnDestroyObservable as Subject<void>).next();
+        this.onDestroy$.next();
+        // TODO check if needed
+        // this.onDestroy$.complete();
     }
 }
 
 export class OnInitMixin {
-    ngOnInitObservable: Observable<void> = new Subject<void>();
+    onInit$ = new ReplaySubject<void>(1);
+
+    ngOnInitObservable(): Observable<void> {
+        return this.onInit$.asObservable();
+    }
+
     ngOnInit() {
-        (this.ngOnInitObservable as Subject<void>).next();
-        (this.ngOnInitObservable as Subject<void>).complete();
+        this.onInit$.next();
     }
 }
 
 export class OnChangesMixin {
-    ngOnSimpleChangesObservable: Observable<SimpleChanges> = new Subject<SimpleChanges>();
+    onChanges$ = new ReplaySubject<SimpleChanges>(1);
+
+    ngOnSimpleChangesObservable(): Observable<SimpleChanges> {
+        return this.onChanges$.asObservable();
+    }
 
     ngOnChanges(changes: SimpleChanges) {
-
+        this.onChanges$.next(changes);
     }
 }
