@@ -4,21 +4,20 @@ import { SimpleChanges } from "@angular/core";
 export class OnDestroyMixin {
     onDestroy$ = new ReplaySubject<void>(1);
 
-    ngOnDestroyObservable(): Observable<void> {
+    observeOnDestroy(): Observable<void> {
         return this.onDestroy$.asObservable();
     }
 
     ngOnDestroy() {
         this.onDestroy$.next();
-        // TODO check if needed
-        // this.onDestroy$.complete();
+        this.onDestroy$.complete();
     }
 }
 
 export class OnInitMixin {
     onInit$ = new ReplaySubject<void>(1);
 
-    ngOnInitObservable(): Observable<void> {
+    observeOnInit(): Observable<void> {
         return this.onInit$.asObservable();
     }
 
@@ -30,7 +29,7 @@ export class OnInitMixin {
 export class OnChangesMixin {
     onChanges$ = new ReplaySubject<SimpleChanges>(1);
 
-    ngOnSimpleChangesObservable(): Observable<SimpleChanges> {
+    observeOnChanges(): Observable<SimpleChanges> {
         return this.onChanges$.asObservable();
     }
 
