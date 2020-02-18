@@ -11,7 +11,7 @@ import {
 } from "@angular/core";
 
 export class OnDestroyMixin implements OnDestroy {
-    onDestroy$ = new ReplaySubject<void>(1);
+    private onDestroy$ = new ReplaySubject<void>(1);
 
     observeOnDestroy(): Observable<void> {
         return this.onDestroy$.asObservable();
@@ -24,7 +24,7 @@ export class OnDestroyMixin implements OnDestroy {
 }
 
 export class OnInitMixin implements OnInit {
-    onInit$ = new ReplaySubject<void>(1);
+    private onInit$ = new ReplaySubject<void>(1);
 
     observeOnInit(): Observable<void> {
         return this.onInit$.asObservable();
@@ -37,7 +37,7 @@ export class OnInitMixin implements OnInit {
 }
 
 export class OnChangesMixin implements OnChanges {
-    onChanges$ = new ReplaySubject<SimpleChanges>(1);
+    private onChanges$ = new ReplaySubject<SimpleChanges>(1);
 
     observeOnChanges(): Observable<SimpleChanges> {
         return this.onChanges$.asObservable();
@@ -49,7 +49,7 @@ export class OnChangesMixin implements OnChanges {
 }
 
 export class OnAfterViewChecked implements AfterViewChecked {
-    onAfterViewChecked$ = new ReplaySubject<void>(1);
+    private onAfterViewChecked$ = new ReplaySubject<void>(1);
 
     observeAfterViewChecked() : Observable<void> {
         return this.onAfterViewChecked$.asObservable();
@@ -62,7 +62,7 @@ export class OnAfterViewChecked implements AfterViewChecked {
 }
 
 export class OnAfterViewInitMixin implements AfterViewInit {
-    onAfterViewInit$ = new ReplaySubject<void>(1);
+    private onAfterViewInit$ = new ReplaySubject<void>(1);
 
     observeOnAfterViewInit() : Observable<void> {
         return this.onAfterViewInit$.asObservable();
@@ -75,7 +75,7 @@ export class OnAfterViewInitMixin implements AfterViewInit {
 }
 
 export class OnAfterContentChecked implements AfterContentChecked {
-    onAfterContentChecked$ = new ReplaySubject<void>(1);
+    private onAfterContentChecked$ = new ReplaySubject<void>(1);
 
     observeOnAfterContentChecked() : Observable<void> {
         return this.onAfterContentChecked$.asObservable();
@@ -88,7 +88,7 @@ export class OnAfterContentChecked implements AfterContentChecked {
 }
 
 export class OnAfterContentInit implements AfterContentInit {
-    onAfterContentInit$ = new ReplaySubject<void>(1);
+    private onAfterContentInit$ = new ReplaySubject<void>(1);
 
     observeOnAfterContentInit() : Observable<void> {
         return this.onAfterContentInit$.asObservable();
