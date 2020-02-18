@@ -11,6 +11,7 @@
     "strict": true,
     "target": "es5",
     "outDir": "dist",
+    "lib": ["ES6", "DOM"],
     "typeRoots": [
       "node_modules/@types"
     ]
