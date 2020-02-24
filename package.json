@@ -1,6 +1,6 @@
 {
   "name": "@w11k/ngx-lifecycle-mixins",
-  "version": "0.0.1",
+  "version": "0.0.1-rc1",
   "description": "Provides mixins for the angular lifecycle.",
   "main": "./dist/index.js",
   "scripts": {
